@@ -259,7 +259,7 @@
 
         data() {
             return {
-                showingNavigationDropdown: false,
+                showingNavigationDropdown: true,
             }
         },
 
