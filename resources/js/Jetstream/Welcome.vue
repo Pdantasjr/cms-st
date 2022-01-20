@@ -6,7 +6,7 @@
             </div>
 
             <div class="mt-8 text-2xl">
-                Bem vindo a sua aplicação Jetstream!
+                Bem vindo ao seu dashboard!
             </div>
 
             <div class="mt-6 text-gray-500">
