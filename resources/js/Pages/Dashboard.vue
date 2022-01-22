@@ -1,30 +1,44 @@
 <template>
     <app-layout title="Dashboard">
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
-                </div>
-            </div>
-        </div>
+        <sidebar />
+        <main-content />
     </app-layout>
 </template>
 
 <script>
-    import { defineComponent } from 'vue'
-    import AppLayout from '@/Layouts/AppLayout.vue'
-    import Welcome from '@/Jetstream/Welcome.vue'
+import {defineComponent} from 'vue'
 
-    export default defineComponent({
-        components: {
-            AppLayout,
-            Welcome,
+import AppLayout from '@/Layouts/AppLayout.vue'
+import MainContent from '@/Layouts/MainContent.vue'
+import Sidebar from '@/Layouts/Sidebar.vue'
+import JetDropdown from '@/Jetstream/Dropdown.vue'
+import JetDropdownLink from '@/Jetstream/DropdownLink.vue'
+
+export default defineComponent({
+    components: {
+        AppLayout,
+        MainContent,
+        Sidebar,
+        JetDropdown,
+        JetDropdownLink,
+    },
+    data() {
+        return {
+            showingNavigationDropdown: true,
+        }
+    },
+    methods: {
+        switchToTeam(team) {
+            this.$inertia.put(route('current-team.update'), {
+                'team_id': team.id
+            }, {
+                preserveState: false
+            })
         },
-    })
+
+        logout() {
+            this.$inertia.post(route('logout'));
+        },
+    }
+})
 </script>
