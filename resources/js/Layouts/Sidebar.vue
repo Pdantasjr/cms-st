@@ -11,19 +11,21 @@
                 <li>
                     <ul class="text-sm space-y-1 -mx-3">
                         <li>
-                            <a href="https://demo.filamentadmin.com"
-                               class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition hover:bg-gray-500/5 focus:bg-gray-500/5">
+                            <a href="/dashboard" class="flex items-center gap-3 px-3 py-2 rounded-lg font-medium transition hover:bg-gray-500/5 focus:bg-gray-500/5">
                                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                                 </svg>
                                 <span>
-                                        Dashboard
-                                    </span>
+                                    Dashboard
+                                </span>
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li>
+<!--                    <Link :href="$route('')">Criar Post</Link>-->
                 </li>
 
                 <li>
@@ -192,7 +194,7 @@
             <div>
                 <form @submit.prevent="logout">
                     <jet-dropdown-link as="button">
-                        <p class="text-sm">Fazer logout</p>
+                        <p class="text-sm">Sair</p>
                     </jet-dropdown-link>
                 </form>
             </div>
@@ -205,6 +207,7 @@ import {defineComponent} from 'vue'
 import JetDropdownLink from "@/Jetstream/DropdownLink";
 
 export default defineComponent({
+    name: 'siderbar',
     components: {
         JetDropdownLink,
     },

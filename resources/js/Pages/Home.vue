@@ -9,11 +9,11 @@
 
             <template v-else>
                 <Link :href="route('login')" class="text-sm text-gray-300 underline">
-                    Log in
+                    Entrar
                 </Link>
 
                 <Link v-if="canRegister" :href="route('register')" class="ml-4 text-sm text-gray-300 underline">
-                    Register
+                    Cadastre-se
                 </Link>
             </template>
         </div>

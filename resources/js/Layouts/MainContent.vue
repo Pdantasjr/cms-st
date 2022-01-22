@@ -1,6 +1,6 @@
 <template>
     <main class="w-screen space-y-6 flex-1 flex flex-col w-10/12">
-        <header class="h-[4rem] shrink-0 w-full border-b flex items-center">
+        <header class="h-[4rem] shrink-0 w-full border-b flex items-center bg-white">
             <div class="flex items-center w-full px-2 mx-auto sm:px-4 md:px-6 lg:px-8 max-w-7xl">
                 <button
                     class="shrink-0 flex items-center justify-center w-10 h-10 text-primary-500 rounded-full hover:bg-gray-500/5 focus:bg-primary-500/10 focus:outline-none">
