@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\backend\BlogController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,3 +26,12 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->name('dashboard');
+
+
+Route::get('/blog', [BlogController::class, 'index'])
+    ->name('blog')
+    ->middleware(['auth:sanctum', 'verified']);
+
+Route::get('/blog/novo', [BlogController::class, 'create'])
+    ->name('blog.create')
+    ->middleware(['auth:sanctum', 'verified']);

@@ -14,7 +14,6 @@
 
 <script>
 import {defineComponent} from 'vue'
-import JetApplicationMark from '@/Jetstream/ApplicationMark.vue'
 import JetBanner from '@/Jetstream/Banner.vue'
 import {Head, Link} from '@inertiajs/inertia-vue3';
 
@@ -22,10 +21,8 @@ export default defineComponent({
     props: {
         title: String,
     },
-
     components: {
         Head,
-        JetApplicationMark,
         JetBanner,
         Link,
     },

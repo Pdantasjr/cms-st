@@ -1,21 +1,24 @@
 <template>
-        <main class="w-screen space-y-6 flex-1 flex flex-col w-10/12">
-            <slot name="header"></slot>
-            <slot name="dashboard_content"></slot>
-        </main>
+    <div>
+        <main-content title="Dashboard">
+            <template v-slot:dashnoard>
+                <h1>Once you have your server-side framework configured, you then need to setup your client-side framework. Inertia currently provides support for React, Vue, and Svelte.
+                    Install dependencie</h1>
+                Install dependencie
+                Install dependencie
+            </template>
+        </main-content>
+    </div>
 </template>
 
 <script>
 import {defineComponent} from 'vue'
-
 import JetDropdown from "@/Jetstream/Dropdown";
 import JetDropdownLink from "@/Jetstream/DropdownLink";
-
+import MainContent from "@/Layouts/MainContent";
 export default defineComponent({
-    props: {
-        title: String,
-    },
     components: {
+        MainContent,
         JetDropdown,
         JetDropdownLink,
     },
