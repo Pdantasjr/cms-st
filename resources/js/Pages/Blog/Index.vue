@@ -166,14 +166,14 @@
                 <div class="flex-1 w-full px-4 mx-auto md:px-6 lg:px-8 max-w-7xl">
                     <div class="space-y-6">
                         <header class="space-y-2 items-start justify-between sm:flex sm:space-y-0 sm:space-x-4 sm:py-4">
-                            <h1 class="text-2xl font-bold tracking-tight md:text-3xl">
+                            <h1 class="text-2xl font-bold tracking-tight md:text-3xl text-gray-900">
                                 Posts
                             </h1>
 <!--                            Botão-->
                             <div class="flex flex-wrap items-center gap-4 justify-start shrink-0">
-                                <a class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white" href="/blog/novo">
+                                <Link class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white" href="/blog/novo">
                                     <span>Novo post</span>
-                                </a>
+                                </Link>
                             </div>
                         </header>
                         <div>
@@ -183,7 +183,7 @@
                                         <div
                                             class="flex flex-1 flex-col items-center justify-center p-6 mx-auto space-y-6 text-center bg-white">
                                             <div
-                                                class="flex items-center justify-center w-16 h-16 text-primary-500 rounded-full bg-yellow-50">
+                                                class="flex items-center justify-center w-16 h-16 text-primary-500 rounded-full bg-yellow-100">
                                                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                                      viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -192,7 +192,7 @@
                                             </div>
 
                                             <div class="max-w-xs space-y-1">
-                                                <h2 class="text-xl font-bold tracking-tight">
+                                                <h2 class="text-xl font-bold tracking-tight text-gray-900">
                                                     Sem postagens ainda.
                                                 </h2>
                                             </div>
