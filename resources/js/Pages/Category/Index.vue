@@ -167,39 +167,55 @@
                     <div class="space-y-6">
                         <header class="space-y-2 items-start justify-between sm:flex sm:space-y-0 sm:space-x-4 sm:py-4">
                             <h1 class="text-2xl font-bold tracking-tight md:text-3xl text-gray-900">
-                                Posts
+                                Categorias
                             </h1>
-<!--                            Botão-->
+                            <!--                            Botão-->
                             <div class="flex flex-wrap items-center gap-4 justify-start shrink-0">
-                                <Link class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white"
-                                      :href="route('blog.create')">
-                                    <span>Novo post</span>
+                                <Link
+                                    class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white"
+                                    :href="route('category.create')">
+                                    <span>Nova categoria</span>
                                 </Link>
                             </div>
                         </header>
                         <div>
                             <div class="border border-gray-300 shadow-sm bg-white rounded-xl">
                                 <div class="overflow-y-auto relative border-t">
-                                    <div class="flex items-center justify-center p-4">
-                                        <div
-                                            class="flex flex-1 flex-col items-center justify-center p-6 mx-auto space-y-6 text-center bg-white">
-                                            <div
-                                                class="flex items-center justify-center w-16 h-16 text-primary-500 rounded-full bg-yellow-100">
-                                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                     viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
-                                            </div>
+                                        <table class="w-full text-left divide-y table-auto">
+                                            <thead>
+                                                <tr class="bg-gray-50 rounded">
+                                                    <th class="px-4 py-2">
+                                                        <span class="flex items-center whitespace-nowrap space-x-1 rtl:space-x-reverse font-medium text-sm text-gray-600">Nome</span>
+                                                    </th>
+                                                    <th class="px-4 py-2">
+                                                        <span class="flex items-center whitespace-nowrap space-x-1 rtl:space-x-reverse font-medium text-sm text-gray-600">Última Atualização</span>
+                                                    </th>
+                                                    <th class="px-4 py-2">
+                                                        <span class="flex items-center whitespace-nowrap space-x-1 rtl:space-x-reverse font-medium text-sm text-gray-600">Opções</span>
+                                                    </th>
+                                                </tr>
+                                            </thead>
 
-                                            <div class="max-w-xs space-y-1">
-                                                <h2 class="text-xl font-bold tracking-tight text-gray-900">
-                                                    Sem postagens ainda.
-                                                </h2>
-                                            </div>
-
-                                        </div>
-                                    </div>
+                                            <tbody class="divide-y whitespace-nowrap">
+                                                <tr v-for="category in categories" :key="category.id">
+                                                    <td>
+                                                        <div class="px-4 py-3">
+                                                           <span>{{category.name}}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="px-4 py-3">
+                                                           <span>{{category.updated_at }}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="px-4 py-3">
+                                                            <Link :href="route('category.update', [category.id])" class="hover:underline focus:outline-none focus:underline text-primary hover:text-yellow-600 text-sm font-medium">Editar</Link>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                 </div>
 
                                 <div class="p-2 border-t">
@@ -208,15 +224,14 @@
                                         <div class="hidden flex-1 items-center lg:grid grid-cols-3">
                                             <div class="flex items-center">
                                                 <div class="pl-2 text-sm font-medium">
-                                                    {{ posts }} <br><br>
                                                 </div>
                                             </div>
 
                                             <div class="flex items-center justify-center">
                                                 <div class="flex items-center space-x-2 rtl:space-x-reverse">
                                                     <select
-                                                            id="tableRecordsPerPageSelect"
-                                                            class="h-8 text-sm pr-8 leading-none transition duration-75 border-gray-200 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600">
+                                                        id="tableRecordsPerPageSelect"
+                                                        class="h-8 text-sm pr-8 leading-none transition duration-75 border-gray-200 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600">
                                                         <option value="5">5</option>
                                                         <option value="10">10</option>
                                                         <option value="25">25</option>
@@ -255,7 +270,7 @@ import JetDropdownLink from "@/Jetstream/DropdownLink";
 
 export default defineComponent({
     props: {
-        posts: Object,
+        categories: Object,
     },
     components: {
         AppLayout,
@@ -265,7 +280,7 @@ export default defineComponent({
         Link,
         JetDropdown,
         JetDropdownLink,
-    },
+    }
 })
 </script>
 
