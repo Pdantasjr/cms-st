@@ -170,13 +170,14 @@
                                 Novo Post
                             </h1>
                         </header>
-                        <form class="space-y-6" submit.prevent="create">
+                        <form class="space-y-6" @submit.prevent="submit('/blog/store')">
                             <div class="grid gap-6 grid-cols-1">
                                 <div class="col-span-full">
                                     <div class="grid gap-6 grid-cols-1 lg:grid-cols-3">
                                         <div class="col-span-2 ">
                                             <div class="p-6 bg-white shadow rounded-xl">
                                                 <div class="grid gap-6 grid-cols-1 sm:grid-cols-2">
+<!--                                                    Título-->
                                                     <div class="col-span-1 ">
                                                         <div>
                                                             <div class="space-y-2">
@@ -184,57 +185,54 @@
                                                                     class="flex items-center justify-between space-x-2 rtl:space-x-reverse">
                                                                     <label
                                                                         class="inline-flex items-center space-x-3 rtl:space-x-reverse"
-                                                                        for="data.title">
+                                                                        for="title">
                                                                     <span class="text-sm font-medium leading-4 text-gray-700">
-                                                                        Title
+                                                                        Título
                                                                         <sup class="font-medium text-danger-700">*</sup>
                                                                     </span>
                                                                     </label>
                                                                 </div>
-
                                                                 <div class="flex items-center space-x-1 group">
-
                                                                     <div class="flex-1">
-                                                                        <input type="text" id="data.title" required=""
+                                                                        <input type="text" id="title" name="title" v-model="form.title"
                                                                                class="block w-full h-10 transition duration-75 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border-gray-300">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-span-1">
+<!--                                                    Subtítulo-->
+                                                    <div class="col-span-1 ">
                                                         <div>
                                                             <div class="space-y-2">
                                                                 <div
                                                                     class="flex items-center justify-between space-x-2 rtl:space-x-reverse">
                                                                     <label
                                                                         class="inline-flex items-center space-x-3 rtl:space-x-reverse"
-                                                                        for="data.slug">
+                                                                        for="subtitle">
                                                                     <span class="text-sm font-medium leading-4 text-gray-700">
-                                                                        Slug
+                                                                        Subtítulo
                                                                         <sup class="font-medium text-danger-700">*</sup>
                                                                     </span>
                                                                     </label>
-
                                                                 </div>
                                                                 <div class="flex items-center space-x-1 group">
                                                                     <div class="flex-1">
-                                                                        <input type="text"
-                                                                               disabled="" id="data.slug" required=""
+                                                                        <input type="text" name="subtitle" id="subtitle" required="" v-model="form.subtitle"
                                                                                class="block w-full h-10 transition duration-75 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border-gray-300">
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
+<!--                                                    Conteúdo-->
                                                     <div class="col-span-1  sm:col-span-2">
                                                         <div>
                                                             <div class="space-y-2">
                                                                 <div
                                                                     class="flex items-center justify-between space-x-2 rtl:space-x-reverse">
-                                                                    <label
-                                                                        class="inline-flex items-center space-x-3 rtl:space-x-reverse"
-                                                                        for="">
+                                                                    <label class="inline-flex items-center space-x-3 rtl:space-x-reverse"
+                                                                        for="content">
                                                                     <span class="text-sm font-medium leading-4 text-gray-700">
                                                                         Conteúdo
                                                                         <sup class="font-medium text-danger-700">*</sup>
@@ -245,14 +243,14 @@
                                                                 <div>
                                                                     <div class="space-y-2">
                                                                         <div class="flex justify-between space-x-4 overflow-x-auto items-stretch h-8">
-
+                                                                            <textarea name="post_content" id="content" v-model="form.post_content"></textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
+<!--                                                    Imagem de destaque-->
                                                     <div class="col-span-1 ">
                                                         <div>
                                                             <div class="space-y-2">
@@ -260,41 +258,56 @@
                                                                     class="flex items-center justify-between space-x-2 rtl:space-x-reverse">
                                                                     <label
                                                                         class="inline-flex items-center space-x-3 rtl:space-x-reverse"
-                                                                        for="data.blog_author_id">
-
+                                                                        for="post_image">
                                                                     <span class="text-sm font-medium leading-4 text-gray-700">
-                                                                        Autor
-                                                                    <sup class="font-medium text-danger-700">*</sup>
+                                                                        Imagem de destaque
+                                                                        <sup class="font-medium text-danger-700">*</sup>
                                                                     </span>
                                                                     </label>
                                                                 </div>
+                                                                <div class="flex items-center space-x-1 group">
+                                                                    <div class="flex-1">
+                                                                        <input type="file" id="post_image" name="post_image"
+                                                                               class="block w-full h-10 transition duration-75 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border-gray-300">
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
-
                                                     </div>
+<!--                                                    Categoria-->
                                                     <div class="col-span-1 ">
                                                         <div>
-
                                                             <div class="space-y-2">
                                                                 <div
                                                                     class="flex items-center justify-between space-x-2 rtl:space-x-reverse">
                                                                     <label
                                                                         class="inline-flex items-center space-x-3 rtl:space-x-reverse"
-                                                                        for="">
+                                                                        for="category">
                                                                     <span class="text-sm font-medium leading-4 text-gray-700">
                                                                         Categoria
                                                                         <sup class="font-medium text-danger-700">*</sup>
                                                                     </span>
+                                                                        <span v-if="errors.category" class="text-red-400">{{ errors.category }}</span>
                                                                     </label>
+                                                                </div>
+                                                                <div class="space-y-2">
+                                                                    <select v-model="form.category" class="block w-full h-10 transition duration-75 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border-gray-300" name="category_id" id="category">
+<!--                                                                        @foreach($categorys as $category)-->
+<!--                                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>-->
+                                                                        <option value="1" class="relative py-2 pl-3 h-10 flex items-center cursor-default select-none pr-9 text-gray-900">Categoria 1</option>
+                                                                        <option value="2" class="relative py-2 pl-3 h-10 flex items-center cursor-default select-none pr-9 text-gray-900">Categoria 2</option>
+                                                                        <option value="3" class="relative py-2 pl-3 h-10 flex items-center cursor-default select-none pr-9 text-gray-900">Categoria 3</option>
+                                                                        <option value="4" class="relative py-2 pl-3 h-10 flex items-center cursor-default select-none pr-9 text-gray-900">Categoria 4</option>
+<!--                                                                        @endforeach-->
+                                                                    </select>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
-
                                         </div>
+<!--                                        Criado em | Última modificação-->
                                         <div class="col-span-1 ">
                                             <div class="p-6 bg-white shadow rounded-xl">
                                                 <div class="grid gap-6 grid-cols-1">
@@ -343,16 +356,11 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="flex flex-wrap items-center gap-4 justify-start">
                                 <button type="submit"
                                         class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-primary hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white">
                                     <span>Publicar</span>
                                 </button>
-                                <a class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset h-9 px-4 text-gray-800 bg-white border border-gray-300 hover:bg-gray-50 focus:ring-primary-600 focus:text-primary-600 focus:bg-primary-50 focus:border-primary-600"
-                                   href="https://demo.filamentadmin.com/blog/posts">
-                                    <span>Cancelar</span>
-                                </a>
                             </div>
                         </form>
                     </div>
@@ -363,7 +371,7 @@
 </template>
 
 <script>
-import {defineComponent} from 'vue'
+import {defineComponent, reactive} from 'vue'
 
 import AppLayout from '@/Layouts/AppLayout.vue';
 import {Head, Link} from '@inertiajs/inertia-vue3';
@@ -371,8 +379,15 @@ import Sidebar from "@/Layouts/Sidebar";
 import MainContent from "@/Layouts/MainContent";
 import JetDropdown from "@/Jetstream/Dropdown";
 import JetDropdownLink from "@/Jetstream/DropdownLink";
+import JetNavLink from "@/Jetstream/NavLink";
+
 
 export default defineComponent({
+    props: {
+        posts: Object,
+        errors: Object,
+        user: Object,
+    },
     components: {
         AppLayout,
         Sidebar,
@@ -381,6 +396,25 @@ export default defineComponent({
         Link,
         JetDropdown,
         JetDropdownLink,
+        JetNavLink,
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                title: null,
+                slug: null,
+                subtitle: null,
+                post_content: null,
+                author: this.user.id,
+                category: null,
+                post_image: null,
+            }),
+        }
+    },
+    methods: {
+        submit() {
+            this.$inertia.post(route('blog.store'), this.form);
+        }
     },
 })
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <app-layout title="Blog">
+    <app-layout title="Editar Categoria">
         <sidebar/>
         <main-content>
             <template #header>
@@ -166,76 +166,54 @@
                 <div class="flex-1 w-full px-4 mx-auto md:px-6 lg:px-8 max-w-7xl">
                     <div class="space-y-6">
                         <header class="space-y-2 items-start justify-between sm:flex sm:space-y-0 sm:space-x-4 sm:py-4">
-                            <h1 class="text-2xl font-bold tracking-tight md:text-3xl text-gray-900">
-                                Posts
+                            <h1 class="text-2xl font-bold tracking-tight md:text-3xl">
+                                Editar categoria
                             </h1>
-<!--                            Botão-->
-                            <div class="flex flex-wrap items-center gap-4 justify-start shrink-0">
-                                <Link class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-yellow-400 hover:bg-yellow-500 focus:bg-yellow-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white"
-                                      :href="route('blog.create')">
-                                    <span>Novo post</span>
-                                </Link>
-                            </div>
                         </header>
-                        <div>
-                            <div class="border border-gray-300 shadow-sm bg-white rounded-xl">
-                                <div class="overflow-y-auto relative border-t">
-                                    <div class="flex items-center justify-center p-4">
-                                        <div
-                                            class="flex flex-1 flex-col items-center justify-center p-6 mx-auto space-y-6 text-center bg-white">
-                                            <div
-                                                class="flex items-center justify-center w-16 h-16 text-primary-500 rounded-full bg-yellow-100">
-                                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                     viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                                </svg>
+                        <form class="space-y-6" @submit.prevent="submit('/blog/store')">
+                            <div class="grid gap-6 grid-cols-1">
+                                <div class="col-span-full">
+                                    <div class="grid gap-6 grid-cols-1 lg:grid-cols-3">
+                                        <div class="col-span-2 ">
+                                            <div class="p-6 bg-white shadow rounded-xl">
+                                                <div class="grid gap-6 grid-cols-1 sm:grid-cols-2">
+                                                    <!--                                                    Título-->
+                                                    <div class="col-span-2 ">
+                                                        <div>
+                                                            <div class="space-y-2">
+                                                                <div
+                                                                    class="flex items-center justify-between space-x-2 rtl:space-x-reverse">
+                                                                    <label
+                                                                        class="inline-flex items-center space-x-3 rtl:space-x-reverse"
+                                                                        for="name">
+                                                                    <span class="text-sm font-medium leading-4 text-gray-700">
+                                                                        Nome da categoria
+                                                                        <sup class="font-medium text-red-700">*</sup>
+                                                                    </span>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="flex items-center space-x-1 group">
+                                                                    <div class="flex-1">
+                                                                        <input type="text" id="name" name="name" v-model="form.name"
+                                                                               class="block w-full h-10 transition duration-75 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600 border-gray-300">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                            <div class="max-w-xs space-y-1">
-                                                <h2 class="text-xl font-bold tracking-tight text-gray-900">
-                                                    Sem postagens ainda.
-                                                </h2>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="p-2 border-t">
-                                    <nav role="navigation" aria-label="Pagination Navigation"
-                                         class="flex items-center justify-between">
-                                        <div class="hidden flex-1 items-center lg:grid grid-cols-3">
-                                            <div class="flex items-center">
-                                                <div class="pl-2 text-sm font-medium">
-                                                    {{ posts }} <br><br>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-center">
-                                                <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                                                    <select
-                                                            id="tableRecordsPerPageSelect"
-                                                            class="h-8 text-sm pr-8 leading-none transition duration-75 border-gray-200 rounded-lg shadow-sm focus:border-primary-600 focus:ring-1 focus:ring-inset focus:ring-primary-600">
-                                                        <option value="5">5</option>
-                                                        <option value="10">10</option>
-                                                        <option value="25">25</option>
-                                                        <option value="50">50</option>
-                                                    </select>
-
-                                                    <label for="tableRecordsPerPageSelect" class="text-sm font-medium">
-                                                        por página.
-                                                    </label>
-                                                </div>
-                                            </div>
-
-                                            <div class="flex items-center justify-end">
-                                            </div>
-                                        </div>
-                                    </nav>
-                                </div>
                             </div>
-                        </div>
+                            <div class="flex flex-wrap items-center gap-4 justify-start">
+                                <button type="submit"
+                                        class="inline-flex items-center justify-center font-medium tracking-tight rounded-lg focus:outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset bg-primary hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700 h-9 px-4 text-white shadow focus:ring-white">
+                                    <span>Editar</span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </template>
@@ -244,7 +222,7 @@
 </template>
 
 <script>
-import {defineComponent} from 'vue'
+import {defineComponent, reactive} from 'vue'
 
 import AppLayout from '@/Layouts/AppLayout.vue';
 import {Head, Link} from '@inertiajs/inertia-vue3';
@@ -252,10 +230,12 @@ import Sidebar from "@/Layouts/Sidebar";
 import MainContent from "@/Layouts/MainContent";
 import JetDropdown from "@/Jetstream/Dropdown";
 import JetDropdownLink from "@/Jetstream/DropdownLink";
+import JetNavLink from "@/Jetstream/NavLink";
+
 
 export default defineComponent({
     props: {
-        posts: Object,
+        categorySlug: Object
     },
     components: {
         AppLayout,
@@ -265,6 +245,19 @@ export default defineComponent({
         Link,
         JetDropdown,
         JetDropdownLink,
+        JetNavLink,
+    },
+    data() {
+        return {
+            form: this.$inertia.form({
+                name: this.categorySlug,
+            }),
+        }
+    },
+    methods: {
+        submit() {
+            this.$inertia.put(route('category.update', [this.categorySlug]), this.form);
+        }
     },
 })
 </script>
